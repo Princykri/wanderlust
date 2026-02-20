@@ -73,9 +73,9 @@ To setup the project locally follow the steps:
 
 7. Launch the development server with `npm start` in the root directory of the repository.
 
-# Running the Backend on an Azure VM (SSH Port Forwarding)
+# Running the Backend & frotend on an Azure VM (SSH Port Forwarding)
 
-When running the backend on an Azure VM, the application listens on localhost:8080 inside the VM.
+When running the backend on an Azure VM, the application listens on localhost:8080,5173 inside the VM.
 To access it from your local machine without changing the backend code, use SSH port forwarding.
 
 Prerequisites (Azure)
@@ -95,7 +95,7 @@ Port 8080 allowed in the NSG (for direct access or future reverse-proxy setups)
 2. From your local machine, open a new terminal and run:
 
    ```bash
-   ssh -i <path-to-private-key>.pem -L 8080:localhost:8080 azureuser@<VM_PUBLIC_IP>
+   ssh -i <path-to-private-key>.pem -L 8080:localhost:8080  -L 5173:localhost:5173 azureuser@<VM_PUBLIC_IP>
    ```
 3. From your local machine, open a new terminal and run:
 
