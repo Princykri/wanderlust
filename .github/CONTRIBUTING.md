@@ -44,6 +44,7 @@ To setup the project locally follow the steps:
    ```
 
 3. Download the required dependencies
+   - Make sure you install [ node,npm](https://nodejs.org/en/download)
    ```bash
    cd wanderlust
    npm run installer
@@ -71,6 +72,37 @@ To setup the project locally follow the steps:
    ```
 
 7. Launch the development server with `npm start` in the root directory of the repository.
+
+# Running the Backend on an Azure VM (SSH Port Forwarding)
+
+When running the backend on an Azure VM, the application listens on localhost:8080 inside the VM.
+To access it from your local machine without changing the backend code, use SSH port forwarding.
+
+Prerequisites (Azure)
+
+An Azure VM with:
+
+SSH (port 22) allowed in the Network Security Group (NSG).
+Port 8080 allowed in the NSG (for direct access or future reverse-proxy setups)
+
+
+
+1. Ensure the backend is running on the VM:
+
+   ```bash
+   npm run start-backend
+   ```
+2. From your local machine, open a new terminal and run:
+
+   ```bash
+   ssh -i <path-to-private-key>.pem -L 8080:localhost:8080 azureuser@<VM_PUBLIC_IP>
+   ```
+3. From your local machine, open a new terminal and run:
+
+   ```bash
+    http://localhost:8080 OR http://20.193.249.54:8080
+   ```
+   
 
 <a name="request-for-changes-pull-requests"></a>
 
